@@ -1,0 +1,28 @@
+package com.LojaZuleide.EcommerceZuleide.models;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_pedidos")
+public class Pedido implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pedido")
+	private Long idPedido;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_cliente")
+	private Cliente idCliente;
+}

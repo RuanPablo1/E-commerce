@@ -1,0 +1,5 @@
+package com.LojaZuleide.EcommerceZuleide.enums;
+
+public enum StatusPedido {
+
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
+    <fullyQualifiedTypeName name="javax.persistence.JoinTable"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.enums.RoleName"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.enums.StatusPedido"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
+    <fullyQualifiedTypeName name="javax.persistence.EnumType"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Cliente"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.PessoaFisica"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.PessoaJuridica"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Roles"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Produto"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Categoria"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Imagens"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.LojaZuleide.EcommerceZuleide.models.Pedido"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+</qualifiedTypeNameHistroy>

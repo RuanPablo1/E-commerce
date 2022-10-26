@@ -1,0 +1,30 @@
+package com.LojaZuleide.EcommerceZuleide.models;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_produtos")
+public class Produtos implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_produto")
+	private Long idProduto;
+	
+	private String produto;
+	
+	private Double valor;
+	
+	private String descricaoTecnica;
+	
+	private Categoria categoria;
+}

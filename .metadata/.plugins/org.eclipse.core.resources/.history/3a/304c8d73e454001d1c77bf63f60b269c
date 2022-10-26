@@ -1,0 +1,5 @@
+package com.LojaZuleide.EcommerceZuleide.repositories;
+
+public class ClienteRepository {
+
+}
