@@ -1,9 +1,0 @@
-package com.LojaZuleide.EcommerceZuleide.repositories;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.LojaZuleide.EcommerceZuleide.models.Roles;
-
-public interface RolesRepository  extends JpaRepository <Roles, Long> {
-
-}

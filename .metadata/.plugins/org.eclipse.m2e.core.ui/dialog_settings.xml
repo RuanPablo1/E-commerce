@@ -2,7 +2,11 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Users\PICHAU\Desktop\Projetos Java\E-commerce\EcommerceZuleide"/>
+			<item value="C:\Users\PICHAU\Desktop\Projetos Java\E-commerce"/>
+			<item value="C:\Users\PICHAU\Desktop\Projetos Java\Software gerenciamento\backend"/>
+			<item value="C:\Users\PICHAU\Desktop\Projetos Java\Software gerenciamento\Gerenciamento"/>
+			<item value="C:\Users\PICHAU\Desktop\Projetos Java\Projeto gerenciamento"/>
+			<item value="C:\Users\PICHAU\Desktop\Projetos Java\Projeto gerenciamento\backend"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

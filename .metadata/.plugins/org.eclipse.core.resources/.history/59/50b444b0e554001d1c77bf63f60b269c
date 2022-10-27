@@ -1,5 +1,0 @@
-package com.LojaZuleide.EcommerceZuleide.repositories;
-
-public interface CategoriaRepository {
-
-}
