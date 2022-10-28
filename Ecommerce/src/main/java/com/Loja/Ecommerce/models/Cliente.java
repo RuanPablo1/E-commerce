@@ -1,91 +1,36 @@
 package com.Loja.Ecommerce.models;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_clientes")
-public class Cliente implements Serializable {
+public class Cliente extends Usuario {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_cliente")
-	private Long id;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "password")
-	private String password;
-	
-	@Column(name = "nome")
-	private String nome;
 
 	@Column(name = "telefone")
 	private String telefone;
 	
-	@ManyToMany
-	@JoinTable(name = "tb_clientes_roles", 
-	joinColumns = @JoinColumn(name = "id_cliente"), 
-	inverseJoinColumns = @JoinColumn(name = "id_role"))
-	private List<Roles> roles;
-
+	@OneToMany(mappedBy = "idPedido")
+	private List<Pedido> pedidos;
 	
 	public Cliente() {
 	}
 
-	
-	public Cliente(Long id, String email, String password, String nome, String telefone) {
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.nome = nome;
+	public Cliente(Long idUsuario, String email, String password, String nome, List<Roles> roles, Long idCliente,
+			String telefone, List<Pedido> pedidos) {
+		super(idUsuario, email, password, nome, roles);
 		this.telefone = telefone;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+		this.pedidos = pedidos;
 	}
 
 	public String getTelefone() {
@@ -96,22 +41,31 @@ public class Cliente implements Serializable {
 		this.telefone = telefone;
 	}
 
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, nome, password, telefone);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(pedidos, telefone);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(password, other.password) && Objects.equals(telefone, other.telefone);
+		return Objects.equals(pedidos, other.pedidos) && Objects.equals(telefone, other.telefone);
 	}
-
 }

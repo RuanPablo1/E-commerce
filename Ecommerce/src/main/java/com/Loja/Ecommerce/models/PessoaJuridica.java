@@ -1,62 +1,32 @@
 package com.Loja.Ecommerce.models;
 
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_pessoa_juridica")
-public class PessoaJuridica implements Serializable {
+public class PessoaJuridica extends Cliente {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_juridica")
-	private Long idJuridica;
-	
-	@ManyToOne
-    @JoinColumn(name = "id_cliente")
-	private Cliente idCliente;
-	
 	@Column(name = "cnpj", nullable = false)
 	private String cnpj;
-	
+
 	@Column(name = "razao_social")
 	private String razaoSocial;
-	
+
 	public PessoaJuridica() {
 	}
 
-	public PessoaJuridica(Long idJuridica, Cliente idCliente, String cnpj, String razaoSocial) {
-		this.idJuridica = idJuridica;
-		this.idCliente = idCliente;
+	public PessoaJuridica(Long idUsuario, String email, String password, String nome, List<Roles> roles, Long idCliente,
+			String telefone, List<Pedido> pedidos, String cnpj, String razaoSocial) {
+		super(idUsuario, email, password, nome, roles, idCliente, telefone, pedidos);
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
-	}
-
-	public Long getIdJuridica() {
-		return idJuridica;
-	}
-
-	public void setIdJuridica(Long idJuridica) {
-		this.idJuridica = idJuridica;
-	}
-
-	public Cliente getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Cliente idCliente) {
-		this.idCliente = idCliente;
 	}
 
 	public String getCnpj() {
@@ -77,19 +47,21 @@ public class PessoaJuridica implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cnpj, idCliente, idJuridica, razaoSocial);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(cnpj, razaoSocial);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaJuridica other = (PessoaJuridica) obj;
-		return Objects.equals(cnpj, other.cnpj) && Objects.equals(idCliente, other.idCliente)
-				&& Objects.equals(idJuridica, other.idJuridica) && Objects.equals(razaoSocial, other.razaoSocial);
+		return Objects.equals(cnpj, other.cnpj) && Objects.equals(razaoSocial, other.razaoSocial);
 	}
 }

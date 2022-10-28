@@ -1,31 +1,17 @@
 package com.Loja.Ecommerce.models;
 
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_pessoa_fisica")
-public class PessoaFisica implements Serializable {
+public class PessoaFisica extends Cliente {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_fisica")
-	private Long idFisica;
-	
-	@ManyToOne
-    @JoinColumn(name = "id_cliente")
-	private Cliente idCliente;
 	
 	@Column(name = "cpf", nullable = false)
 	private String cpf;
@@ -33,26 +19,10 @@ public class PessoaFisica implements Serializable {
 	public PessoaFisica() {
 	}
 
-	public PessoaFisica(Long idFisica, Cliente idCliente, String cpf) {
-		this.idFisica = idFisica;
-		this.idCliente = idCliente;
+	public PessoaFisica(Long idUsuario, String email, String password, String nome, List<Roles> roles, Long idCliente,
+			String telefone, List<Pedido> pedidos, String cpf) {
+		super(idUsuario, email, password, nome, roles, idCliente, telefone, pedidos);
 		this.cpf = cpf;
-	}
-
-	public Long getIdFisica() {
-		return idFisica;
-	}
-
-	public void setIdFisica(Long idFisica) {
-		this.idFisica = idFisica;
-	}
-
-	public Cliente getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Cliente idCliente) {
-		this.idCliente = idCliente;
 	}
 
 	public String getCpf() {
@@ -65,19 +35,21 @@ public class PessoaFisica implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, idCliente, idFisica);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(cpf);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaFisica other = (PessoaFisica) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(idCliente, other.idCliente)
-				&& Objects.equals(idFisica, other.idFisica);
+		return Objects.equals(cpf, other.cpf);
 	}
 }
