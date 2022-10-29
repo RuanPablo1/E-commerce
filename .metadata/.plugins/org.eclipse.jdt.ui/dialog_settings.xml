@@ -58,7 +58,7 @@
 		<item key="FinalModifier" value="false"/>
 		<item key="SynchronizedModifier" value="false"/>
 		<item key="Comments" value="false"/>
-		<item key="InstanceOf" value="false"/>
+		<item key="InstanceOf" value="true"/>
 		<item key="Blocks" value="false"/>
 		<item key="Objects.equals &amp; Objects.hash" value="true"/>
 		<item key="LimitElements" value="false"/>

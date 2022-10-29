@@ -29,7 +29,7 @@ public class AdministradorService {
 		}
 	}
 
-	public Administrador inset(Administrador administrador) {
+	public Administrador insert(Administrador administrador) {
 		administrador.setIdUsuario(null);
 		try {
 			return repository.save(administrador);
