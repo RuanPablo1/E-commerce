@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="com.Loja.Ecommerce.models.Administrador"/>
     <fullyQualifiedTypeName name="com.Loja.Ecommerce.repositories.AdministradorRepository"/>
     <fullyQualifiedTypeName name="com.Loja.Ecommerce.repositories.CategoriaRepository"/>
     <fullyQualifiedTypeName name="com.Loja.Ecommerce.models.Categoria"/>
@@ -19,11 +17,7 @@
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
-    <fullyQualifiedTypeName name="lombok.EqualsAndHashCode"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="com.Loja.Ecommerce.models.ItemPedido"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="com.Loja.Ecommerce.models.Imagens"/>
     <fullyQualifiedTypeName name="javax.persistence.Lob"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Type"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.EqualsAndHashCode"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
 </qualifiedTypeNameHistroy>

@@ -5,15 +5,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_administradores")
 public class Administrador extends Usuario{
 
 	private static final long serialVersionUID = 1L;
-
-	public Administrador() {
-		super();
-	}
 
 	public Administrador(Long idUsuario, String email, String password, String nome, List<Roles> roles) {
 		super(idUsuario, email, password, nome, roles);

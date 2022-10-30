@@ -10,11 +10,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_clientes")

@@ -6219,3 +6219,6 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-10-30 00:50:50.294
 !MESSAGE Boot LS startup time from start to initialized: 7672ms
+
+!ENTRY org.eclipse.ui 2 2 2022-10-30 01:35:19.053
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
