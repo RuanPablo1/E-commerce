@@ -17,7 +17,7 @@ import javax.persistence.MappedSuperclass;
 //@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
 //@Table(name = "tb_usuarios")
-public abstract class Usuario implements Serializable{
+public class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
