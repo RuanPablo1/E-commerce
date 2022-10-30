@@ -31,7 +31,7 @@ public class ClienteService {
 		}
 	}
 
-	public Cliente inset(Cliente cliente) {
+	public Cliente insert(Cliente cliente) {
 		cliente.setIdUsuario(null);
 		try {
 			return repository.save(cliente);

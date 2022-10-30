@@ -31,7 +31,7 @@ public class PessoaFisicaService {
 		}
 	}
 
-	public PessoaFisica inset(PessoaFisica cliente) {
+	public PessoaFisica insert(PessoaFisica cliente) {
 		cliente.setIdUsuario(null);
 		try {
 			return repository.save(cliente);

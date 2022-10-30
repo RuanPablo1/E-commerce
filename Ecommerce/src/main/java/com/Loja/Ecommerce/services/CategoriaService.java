@@ -31,7 +31,7 @@ public class CategoriaService {
 		}
 	}
 
-	public Categoria inset(Categoria categoria) {
+	public Categoria insert(Categoria categoria) {
 		categoria.setIdCategoria(null);
 		try {
 			return repository.save(categoria);

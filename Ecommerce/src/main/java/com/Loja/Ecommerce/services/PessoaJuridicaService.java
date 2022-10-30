@@ -29,7 +29,7 @@ public class PessoaJuridicaService {
 		}
 	}
 
-	public PessoaJuridica inset(PessoaJuridica cliente) {
+	public PessoaJuridica insert(PessoaJuridica cliente) {
 		cliente.setIdUsuario(null);
 		try {
 			return repository.save(cliente);

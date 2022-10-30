@@ -31,7 +31,7 @@ public class ProdutoService {
 		}
 	}
 
-	public Produto inset(Produto produto) {
+	public Produto insert(Produto produto) {
 		produto.setIdProduto(null);;
 		try {
 			return repository.save(produto);

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,8 +27,8 @@ public class Produto implements Serializable {
 	@Column(name = "id_produto")
 	private Long idProduto;
 	
-	@Column(name = "produto")
-	private String produto;
+	@Column(name = "nome_produto")
+	private String nomeProduto;
 	
 	@Column(name = "valor")
 	private Double valor;
@@ -35,6 +36,7 @@ public class Produto implements Serializable {
 	@Column(name = "descricao_tecnica")
 	private String descricaoTecnica;
 	
+	@Lob
 	@OneToMany(mappedBy = "imagem")
 	private List<Imagens> imagens;
 	
@@ -47,10 +49,10 @@ public class Produto implements Serializable {
 	public Produto() {
 	}
 
-	public Produto(Long idProduto, String produto, Double valor, String descricaoTecnica, List<Imagens> imagens,
+	public Produto(Long idProduto, String nomeProduto, Double valor, String descricaoTecnica, List<Imagens> imagens,
 			List<Categoria> categoria) {
 		this.idProduto = idProduto;
-		this.produto = produto;
+		this.nomeProduto = nomeProduto;
 		this.valor = valor;
 		this.descricaoTecnica = descricaoTecnica;
 		this.imagens = imagens;
@@ -65,12 +67,12 @@ public class Produto implements Serializable {
 		this.idProduto = idProduto;
 	}
 
-	public String getProduto() {
-		return produto;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setProduto(String produto) {
-		this.produto = produto;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 	public Double getValor() {
@@ -107,7 +109,7 @@ public class Produto implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(categoria, descricaoTecnica, idProduto, imagens, produto, valor);
+		return Objects.hash(categoria, descricaoTecnica, idProduto, imagens, nomeProduto, valor);
 	}
 
 	@Override
@@ -121,6 +123,6 @@ public class Produto implements Serializable {
 		Produto other = (Produto) obj;
 		return Objects.equals(categoria, other.categoria) && Objects.equals(descricaoTecnica, other.descricaoTecnica)
 				&& Objects.equals(idProduto, other.idProduto) && Objects.equals(imagens, other.imagens)
-				&& Objects.equals(produto, other.produto) && Objects.equals(valor, other.valor);
+				&& Objects.equals(nomeProduto, other.nomeProduto) && Objects.equals(valor, other.valor);
 	}	
 }

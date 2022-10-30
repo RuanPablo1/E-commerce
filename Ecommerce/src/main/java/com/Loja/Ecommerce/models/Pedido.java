@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,8 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.Loja.Ecommerce.enums.StatusPedido;
@@ -51,14 +51,10 @@ public class Pedido implements Serializable {
 	@Column(name = "data_hora")
 	private LocalDateTime dataHora;
 
-//	@ManyToMany
-//	@JoinTable(name = "tb_pedidos_produtos", 
-//	joinColumns = @JoinColumn(name = "id_pedido"), 
-//	inverseJoinColumns = @JoinColumn(name = "id_produto"))
+	@ManyToMany
+	@JoinTable(name = "tb_produtos_pedido",
+	joinColumns = @JoinColumn(name = "id_pedido"), 
+	inverseJoinColumns = @JoinColumn(name = "id_produto"))
     //orphanRemoval = true: utilizado para remover filhos (produtos) sem pai (pedido) em caso de atualizaçao do pedido (para um número de itens menor que o anterior)
-	@OneToMany(mappedBy = "id.pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ItemPedido> itens;
-	
-	
-
+	private List<Produto> produtos;
 }
