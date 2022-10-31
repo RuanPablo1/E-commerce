@@ -13,6 +13,13 @@ import javax.persistence.Table;
 
 import com.Loja.Ecommerce.enums.RoleName;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_roles")
 public class Roles implements Serializable {
@@ -27,19 +34,4 @@ public class Roles implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name ="nome_role", nullable = false, unique = true)
 	private RoleName roleName;
-
-	public Roles() {
-
-	}
-
-	public Roles(Long roleId, RoleName roleName) {
-		this.roleId = roleId;
-		this.roleName = roleName;
-	}
-
-	public Roles(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	
 }

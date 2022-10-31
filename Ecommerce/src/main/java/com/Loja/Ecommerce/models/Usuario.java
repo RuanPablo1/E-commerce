@@ -7,8 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
@@ -23,7 +21,7 @@ import lombok.NoArgsConstructor;
 //@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
 //@Table(name = "tb_usuarios")
-public class Usuario implements Serializable{
+public abstract class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,8 +40,8 @@ public class Usuario implements Serializable{
 	private String nome;
 	
 	@ManyToMany
-	@JoinTable(name = "tb_usuarios_roles", 
-	joinColumns = @JoinColumn(name = "id_usuario"), 
-	inverseJoinColumns = @JoinColumn(name = "id_role"))
+//	@JoinTable(name = "tb_usuarios_roles", 
+//	joinColumns = @JoinColumn(name = "id_usuario"), 
+//	inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private List<Roles> roles;
 }
