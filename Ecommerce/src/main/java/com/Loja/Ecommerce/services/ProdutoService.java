@@ -57,5 +57,8 @@ public class ProdutoService {
 			throw new DataIntegrityException("Não é possível excluir este produto!");
 		}
 	}
-
+	
+	public List<Produto> findByNomeProduto(String nome) {
+        return repository.findByNomeContains(nome);
+    }
 }
