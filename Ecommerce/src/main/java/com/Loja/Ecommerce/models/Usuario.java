@@ -1,14 +1,15 @@
 package com.Loja.Ecommerce.models;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +18,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@MappedSuperclass
-//@Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
-//@Table(name = "tb_usuarios")
+@Entity
+@Table(name = "tb_usuarios")
 public abstract class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -39,9 +38,7 @@ public abstract class Usuario implements Serializable{
 	@Column(name = "nome")
 	private String nome;
 	
-	@ManyToMany
-//	@JoinTable(name = "tb_usuarios_roles", 
-//	joinColumns = @JoinColumn(name = "id_usuario"), 
-//	inverseJoinColumns = @JoinColumn(name = "id_role"))
-	private List<Roles> roles;
+	@ManyToOne
+	@JoinColumn(name = "id_role")
+	private Roles role;
 }

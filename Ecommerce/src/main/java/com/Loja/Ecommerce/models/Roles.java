@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.Loja.Ecommerce.enums.RoleName;
+import com.Loja.Ecommerce.enums.RoleUsuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,5 +33,5 @@ public class Roles implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name ="nome_role", nullable = false, unique = true)
-	private RoleName roleName;
+	private RoleUsuario roleName;
 }

@@ -32,7 +32,7 @@ public class ClienteService {
 	}
 
 	public Cliente insert(Cliente cliente) {
-		cliente.setIdUsuario(null);
+		cliente.setId(null);
 		try {
 			return repository.save(cliente);
 		} catch (DataIntegrityViolationException e) {
@@ -41,7 +41,7 @@ public class ClienteService {
 	}
 
 	public Cliente update(Cliente cliente) {
-		findById(cliente.getIdUsuario());
+		findById(cliente.getId());
 		try {
 			return repository.save(cliente);
 		} catch (DataIntegrityViolationException e) {

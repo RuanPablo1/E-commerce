@@ -1,59 +1,67 @@
 package com.Loja.Ecommerce.models;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
+import com.Loja.Ecommerce.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_clientes")
-public class Cliente extends Usuario {
-
+public class Cliente implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name = "nome_cliente")
+	private String nome;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "password")
+	private String password;
+	
+	@Column(name = "cpf_ou_cnpj")
+	private String CpfOuCnpj;
+	
+	@Column(name = "tipo_cliente")
+	private Integer tipo;
 
 	@Column(name = "telefone")
 	private String telefone;
 	
+	@OneToMany(mappedBy="cliente")
+	private List<Endereco> endereco;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "idPedido")
 	private List<Pedido> pedidos;
 
-	public Cliente(Long idUsuario, String email, String password, String nome, List<Roles> roles, Long idCliente,
-			String telefone, List<Pedido> pedidos) {
-		super(idUsuario, email, password, nome, roles);
+	public Cliente(Long id, String nome, String email, String password, String cpfOuCnpj, String telefone,
+			TipoCliente tipo) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.password = password;
+		CpfOuCnpj = cpfOuCnpj;
 		this.telefone = telefone;
-		this.pedidos = pedidos;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(pedidos, telefone);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(pedidos, other.pedidos) && Objects.equals(telefone, other.telefone);
-	}
+		this.tipo = tipo.getCodigo();
+	}	
 }

@@ -8,7 +8,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.Loja.Ecommerce.dtos.PedidoDTO;
 import com.Loja.Ecommerce.dtos.PedidoInsertDTO;
 import com.Loja.Ecommerce.models.Pedido;
 import com.Loja.Ecommerce.repositories.PedidoRepository;
@@ -21,16 +20,15 @@ public class PedidoService {
 	@Autowired
 	PedidoRepository repository;
 
-	public List<PedidoDTO> findAll() {
-		List<Pedido> list = repository.findAll();
-		return PedidoDTO.convert(list);
+	public List<Pedido> findAll() {
+		List<Pedido> lista = repository.findAll();
+		return lista;
 	}
 
-	public PedidoDTO findById(Long id) {
+	public Pedido findById(Long id) {
 		try {
 			Pedido pedido = repository.findById(id).get();
-			PedidoDTO pedidoDTO = new PedidoDTO(pedido);
-			return pedidoDTO;
+			return pedido;
 		} catch (NotFoundException e) {
 			throw new ObjectNotFoundException("Pedido não encontrado para o número:" + id + ", tipo: " + Pedido.class.getName());
 		}

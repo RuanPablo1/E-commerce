@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.Loja.Ecommerce.models.Cliente;
-import com.Loja.Ecommerce.models.Pedido;
-import com.Loja.Ecommerce.models.Produto;
+import com.Loja.Ecommerce.models.ItemPedido;
 
 import lombok.Data;
 
@@ -21,12 +19,5 @@ public class PedidoInsertDTO implements Serializable {
 	
 	private LocalDateTime dataHora;
 	
-	private List<Produto> produtos;
-
-	public PedidoInsertDTO(Cliente cliente, Pedido pedido) {
-		this.idCliente = cliente.getIdUsuario();
-		this.total = pedido.getTotal();
-		this.dataHora = pedido.getDataHora();
-		this.produtos = pedido.getProdutos();
-	}
+	private List<ItemPedido> produtos;
 }
