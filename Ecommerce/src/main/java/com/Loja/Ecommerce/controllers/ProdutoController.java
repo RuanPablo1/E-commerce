@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Loja.Ecommerce.models.Imagens;
 import com.Loja.Ecommerce.models.Produto;
+import com.Loja.Ecommerce.services.ImagensService;
 import com.Loja.Ecommerce.services.ProdutoService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -24,43 +26,76 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
+
+	@Autowired
+	ProdutoService produtoService;
 	
 	@Autowired
-	ProdutoService service;
-	
+	ImagensService imagensService;
+
 	@GetMapping
-	public ResponseEntity<List<Produto>> findAll(){
-		List<Produto> lista = service.findAll();
+	public ResponseEntity<List<Produto>> findAll() {
+		List<Produto> lista = produtoService.findAll();
 		return ResponseEntity.ok().body(lista);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> findById(@PathVariable Long id) {
-        Produto produto = service.findById(id);
-        return ResponseEntity.ok().body(produto);
-    }
-	
-	@GetMapping("/filtro")
-	public ResponseEntity<List<Produto>> FindByNomeContains(@RequestParam("nome") String nome){
-		List<Produto> produto = service.findByNomeProduto(nome);
+		Produto produto = produtoService.findById(id);
 		return ResponseEntity.ok().body(produto);
 	}
-	
+
+	@GetMapping("/filtro")
+	public ResponseEntity<List<Produto>> FindByNomeContains(@RequestParam("nome") String nome) {
+		List<Produto> produto = produtoService.findByNomeProduto(nome);
+		return ResponseEntity.ok().body(produto);
+	}
+
 	@PostMapping
-	public ResponseEntity<Produto> insert(@Valid @RequestBody Produto produto){
-		produto = service.insert(produto);
+	public ResponseEntity<Produto> insert(@Valid @RequestBody Produto produto) {
+		produto = produtoService.insert(produto);
 		return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<Produto> update(@Valid @RequestBody Produto produto){
-		produto = service.insert(produto);
+	public ResponseEntity<Produto> update(@Valid @RequestBody Produto produto) {
+		produto = produtoService.insert(produto);
 		return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
 	}
+
+	@DeleteMapping("{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		produtoService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 	
-	@DeleteMapping
-	public ResponseEntity<Void> delete(Long id){
-		service.delete(id);
+	@GetMapping("/imagens")
+	public ResponseEntity<List<Imagens>> findAllImagens() {
+		List<Imagens> lista = imagensService.findAll();
+		return ResponseEntity.ok().body(lista);
+	}
+
+	@GetMapping("/imagens/{id}")
+	public ResponseEntity<Imagens> findImagemById(@PathVariable Long id) {
+		Imagens imagem = imagensService.findById(id);
+		return ResponseEntity.ok().body(imagem);
+	}
+
+	@PostMapping("/imagens")
+	public ResponseEntity<Imagens> insertImagem(@Valid @RequestBody Imagens imagem) {
+		imagem = imagensService.insert(imagem);
+		return new ResponseEntity<Imagens>(imagem, HttpStatus.CREATED);
+	}
+
+	@PutMapping("/imagens")
+	public ResponseEntity<Imagens> updateImagem(@Valid @RequestBody Imagens imagem) {
+		imagem = imagensService.insert(imagem);
+		return new ResponseEntity<Imagens>(imagem, HttpStatus.CREATED);
+	}
+
+	@DeleteMapping("/imagens/{id}")
+	public ResponseEntity<Void> deleteImagem(Long id) {
+		imagensService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 }

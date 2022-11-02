@@ -57,5 +57,9 @@ public class CategoriaService {
 			throw new DataIntegrityException("Não é possível excluir esta categoria!");
 		}
 	}
+	
+	public List<Categoria> findByNomeCategoria(String nome) {
+        return repository.findByNomeContains(nome);
+    }
 
 }

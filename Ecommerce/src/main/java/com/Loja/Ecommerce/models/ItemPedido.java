@@ -34,8 +34,8 @@ public class ItemPedido implements Serializable {
 	private Double desconto;
 
 	public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco, Double desconto) {
-		id.setPedido(pedido);
-		id.setProduto(produto);
+		this.id.setPedido(pedido);
+		this.id.setProduto(produto);
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.desconto = desconto;
@@ -45,9 +45,17 @@ public class ItemPedido implements Serializable {
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
+	
+	public void setPedido(Pedido pedido) {
+        id.setPedido(pedido);
+    }
 
 //	Getter de produto id para ter acesso a ela fora da classe original
 	public Produto getProduto() {
 		return id.getProduto();
 	}
+	
+	public void setProduto(Produto produto) {
+        id.setProduto(produto);
+    }
 }

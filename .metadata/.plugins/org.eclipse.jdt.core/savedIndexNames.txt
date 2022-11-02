@@ -36,8 +36,8 @@ INDEX VERSION 1.131+C:\Users\PICHAU\Desktop\Projetos Java\E-commerce\.metadata\.
 3990434107.index
 2217263739.index
 1709768695.index
-4294233919.index
 175139432.index
+4294233919.index
 2032577195.index
 4027030437.index
 709212206.index
@@ -97,7 +97,7 @@ INDEX VERSION 1.131+C:\Users\PICHAU\Desktop\Projetos Java\E-commerce\.metadata\.
 1573966197.index
 821351756.index
 4026182837.index
-2051363782.index
 1155366798.index
+2051363782.index
 655695052.index
 1164759934.index

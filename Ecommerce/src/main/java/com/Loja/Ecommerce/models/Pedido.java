@@ -57,5 +57,5 @@ public class Pedido implements Serializable {
 
 	// Evita que tenha item repetidos
 	@OneToMany(mappedBy="id.pedido")
-	private Set<ItemPedido> itens = new HashSet<>();
+	private Set<ItemPedido> item = new HashSet<>();
 }

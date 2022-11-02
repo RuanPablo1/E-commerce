@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.LojaZuleide</groupId>
-	<artifactId>EcommerceZuleide</artifactId>
+	<artifactId>Ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EcommerceZuleide</name>
+	<name>Ecommerce</name>
 	<description>Loja virtual para a dona Zuleide</description>
 	<properties>
 		<java.version>17</java.version>

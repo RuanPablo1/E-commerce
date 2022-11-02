@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,6 +40,11 @@ public class Cliente implements Serializable {
 	@Column(name = "password")
 	private String password;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "id_role")
+	private Roles role;
+	
 	@Column(name = "cpf_ou_cnpj")
 	private String CpfOuCnpj;
 	
@@ -54,14 +61,15 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "idPedido")
 	private List<Pedido> pedidos;
 
-	public Cliente(Long id, String nome, String email, String password, String cpfOuCnpj, String telefone,
+	public Cliente(Long id, String nome, String email, String password, Roles role, String cpfOuCnpj, String telefone,
 			TipoCliente tipo) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
-		CpfOuCnpj = cpfOuCnpj;
-		this.telefone = telefone;
+		this.role = role;
+		this.CpfOuCnpj = cpfOuCnpj;
 		this.tipo = tipo.getCodigo();
-	}	
+		this.telefone = telefone;
+	}
 }
