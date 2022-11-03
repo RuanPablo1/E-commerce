@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
@@ -38,6 +39,6 @@ public class Imagens implements Serializable {
 	
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
-	@Column(name = "imagem")
+	@NotNull(message = "A imagem deve ser enviada!")
 	private String imagem;
 }

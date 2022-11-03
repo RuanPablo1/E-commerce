@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,10 +30,19 @@ public class Endereco implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "O logradouro deve ser informado!")
 	private String logradouro;
-	private String numero;
+	
+	@Digits(integer=4, fraction=0, message = "O número da casa deve ser preenchido com um valor inteiro!")
+	private Integer numero;
+	
 	private String complemento;
+	
+	@NotBlank(message = "O bairro deve ser informado!")
 	private String bairro;
+	
+	@NotBlank(message = "O CEP deve ser informado!")
 	private String cep;
 	
 	@ManyToOne

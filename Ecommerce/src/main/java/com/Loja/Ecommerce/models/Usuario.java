@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,12 +39,16 @@ public abstract class Usuario implements UserDetails, Serializable {
 	@Column(name = "id_usuario")
 	private Long idUsuario;
 	
+	@NotNull
+	@Email(message = "O formato do e-mail deve ser válido!")
 	@Column(name = "email")
 	private String email;
 	
+	@NotBlank(message = "A senha deve ser válida!")
 	@Column(name = "password")
 	private String password;
 	
+	@NotNull(message = "O nome do usuário deve ser informado!")
 	@Column(name = "nome")
 	private String nome;
 	

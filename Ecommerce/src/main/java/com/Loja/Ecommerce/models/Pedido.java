@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import com.Loja.Ecommerce.enums.StatusPedido;
 
@@ -41,10 +43,13 @@ public class Pedido implements Serializable {
 	@JoinColumn(name = "id_cliente")
 	private Cliente idCliente;
 	
+	@NotNull(message = "O endereço de entrega deve ser informado!")
 	@ManyToOne
 	@JoinColumn(name="endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
 	
+	@NotNull(message = "O valor total deve ser informado!")
+	@Digits(integer=8, fraction=2, message = "O valor total do pedido deve ser preenchido com dígitos!")
 	@Column(name = "total")
 	private Double total;
 

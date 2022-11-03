@@ -14,6 +14,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,10 +36,12 @@ public class Produto implements Serializable {
 	@Column(name = "id_produto")
 	private Long idProduto;
 	
+	@NotBlank(message = "O nome do cliente deve ser informado!")
 	@Column(name = "nome_produto")
 	private String nome;
 	
-	@Column(name = "valor")
+	@NotNull
+	@Digits(integer=8, fraction=2, message = "O valor do produto deve ser preenchido com dígitos!")
 	private Double valor;
 	
 	@Column(name = "descricao_tecnica")

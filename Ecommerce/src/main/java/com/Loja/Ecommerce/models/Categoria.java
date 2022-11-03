@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class Categoria implements Serializable {
 	@Column(name = "id_categoria")
 	private Long idCategoria;
 	
+	@NotBlank(message = "O nome da categoria deve ser informado!")
 	@Column(name = "nome")
 	private String nome;
 }

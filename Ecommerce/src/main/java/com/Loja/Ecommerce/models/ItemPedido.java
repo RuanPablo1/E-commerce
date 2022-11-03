@@ -2,10 +2,11 @@ package com.Loja.Ecommerce.models;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,13 +25,14 @@ public class ItemPedido implements Serializable {
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
 
-	@Column
+	@NotNull(message = "A quantidade do item do pedido deve ser preenchida!")
+    @Digits(integer=8, fraction=0, message = "A quantidade do item do pedido deve ser preenchido SEM dígitos!")
 	private Integer quantidade;
 
-	@Column
+	@NotNull(message = "O valor do item do pedido deve ser preenchido!")
+    @Digits(integer=8, fraction=2, message = "O valor do item do pedido deve ser preenchido com dígitos!")
 	private Double preco;
 
-	@Column
 	private Double desconto;
 
 	public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco, Double desconto) {

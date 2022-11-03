@@ -15,6 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -34,12 +38,16 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message = "O nome do cliente deve ser informado!")
+	@Size(min = 2, max = 100, message = "O nome do cliente deve ter entre 2 e 100 letras")
 	@Column(name = "nome_cliente")
 	private String nome;
 	
-	@Column(name = "email")
+	@Email(message = "O formato de e-mail não é válido!")
+	@Column(name = "email", unique = true)
 	private String email;
 	
+	@NotBlank(message = "A senha deve ser informada!")
 	@Column(name = "password")
 	private String password;
 	
@@ -50,12 +58,15 @@ public class Cliente implements Serializable {
 	inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private List<Roles> role;
 	
-	@Column(name = "cpf_ou_cnpj")
+	@NotBlank(message = "O dados de cpf ou cnpj devem ser informados!")
+	@Column(name = "cpf_ou_cnpj", unique = true)
 	private String CpfOuCnpj;
 	
+	@NotNull(message = "O tipo de cliente deve ser informado!")
 	@Column(name = "tipo_cliente")
 	private Integer tipo;
 
+	@NotBlank(message = "O telefone deve ser informado!")
 	@Column(name = "telefone")
 	private String telefone;
 	
