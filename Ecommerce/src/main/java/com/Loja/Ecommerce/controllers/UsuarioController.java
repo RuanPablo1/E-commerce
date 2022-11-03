@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,9 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService service;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll(){
 		List<Usuario> lista = service.findAll();
@@ -40,14 +44,16 @@ public class UsuarioController {
 	
 	@PostMapping
 	public ResponseEntity<Usuario> insert(@Valid @RequestBody Usuario usuario){
-		usuario = service.insert(usuario);
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
+		String senhaCriptografa = passwordEncoder.encode(usuario.getPassword());
+		usuario.setPassword(senhaCriptografa);
+		return new ResponseEntity<Usuario>(service.insert(usuario), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
 	public ResponseEntity<Usuario> update(@Valid @RequestBody Usuario usuario){
-		usuario = service.update(usuario);
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
+		String senhaCriptografa = passwordEncoder.encode(usuario.getPassword());
+		usuario.setPassword(senhaCriptografa);
+		return new ResponseEntity<Usuario>(service.update(usuario), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")

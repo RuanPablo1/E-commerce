@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,9 @@ public class ClienteController {
 	@Autowired
 	ClienteService service;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@GetMapping
 	public ResponseEntity<List<Cliente>> findAll(){
 		List<Cliente> lista = service.findAll();
@@ -44,14 +48,16 @@ public class ClienteController {
 	public ResponseEntity<Cliente> insert(@Valid @RequestBody ClienteInsertDTO clienteDTO){
 		var cliente = new Cliente();
 		BeanUtils.copyProperties(clienteDTO, cliente);
-		cliente = service.insert(cliente);
-		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
+		String senhaCriptografa = passwordEncoder.encode(cliente.getPassword());
+		cliente.setPassword(senhaCriptografa);
+		return new ResponseEntity<Cliente>(service.insert(cliente), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
 	public ResponseEntity<Cliente> update(@Valid @RequestBody Cliente cliente){
-		cliente = service.update(cliente);
-		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
+		String senhaCriptografa = passwordEncoder.encode(cliente.getPassword());
+		cliente.setPassword(senhaCriptografa);
+		return new ResponseEntity<Cliente>(service.update(cliente), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")

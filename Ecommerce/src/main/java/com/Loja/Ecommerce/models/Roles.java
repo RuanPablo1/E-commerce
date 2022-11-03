@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import com.Loja.Ecommerce.enums.NomeRoles;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_roles")
-public class Roles implements Serializable {
+public class Roles implements GrantedAuthority, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,4 +36,9 @@ public class Roles implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name ="nome_role", nullable = false, unique = true)
 	private NomeRoles roleName;
+
+	@Override
+	public String getAuthority() {
+		return this.roleName.toString();
+	}
 }
